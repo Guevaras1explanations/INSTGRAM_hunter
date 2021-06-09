@@ -490,8 +490,7 @@ try {
           }
 			}
 		}
-	};
-	$bot = new EzTG(array('throw_telegram_errors'=>false,'token' => $token, 'callback' => $callback));
+	
 } catch(Exception $e){
 	echo $e->getMessage().PHP_EOL;
 	sleep(1);
