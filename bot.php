@@ -30,30 +30,30 @@ try {
 					if($text == '/start'){
               $bot->sendphoto([ 'chat_id'=>$chatId,
                   'photo'=>"https://t.me/ZX1DR",
-                   'caption'=>' -   BY- @X888E  @E999G ',
+                   'caption'=>' - 𝗥𝗜𝗢 𝗛𝗨𝗡𝗧𝗘𝗥 BY- @N_W_9  @A_5CT ',
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
                           [['text'=>'• 𝐀𝐃𝐃 𝐀 𝐍𝐄𝐖 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 😁','callback_data'=>'login']],
-                          [['text'=>"𝗖𝗛 𝗕𝗢𝗧️", 'url'=>"t.me/E999G"]],
+                          [['text'=>"𝗖𝗛 𝗕𝗢𝗧️", 'url'=>"t.me/A_5CT"]],
                       ]
                   ])
               ]);   
  
              $bot->sendvideo([ 'chat_id'=>$chatId,
-                  'video'=>"https://t.me/E999G",
+                  'video'=>"https://t.me/FOLLOW_NAFSEA",
                    'caption'=>'فيديو توضيحي لعمل البوت 📍',
 
                 ]);
 
                
                  $bot->sendvoice([ 'chat_id'=>$chatId,
-                  'voice'=>"https://t.me/E999G",
+                  'voice'=>"https://t.me/FOLLOW_NAFSEA",
                    'caption'=>'بصمه تعليم السحب ♻️',
 
                 ]);
                 
                 $bot->sendvoice([ 'chat_id'=>$chatId,
-                  'voice'=>"https://t.me/E999G",
+                  'voice'=>"https://t.me/FOLLOW_NAFSEA",
                    'caption'=>'بصمه تعليم السحب 2 ♻️',
 
                 ]);
@@ -128,8 +128,8 @@ try {
                       'chat_id'=>$chatId,
                       'message_id'=>$mid,
                       'text'=>"•  𝐁𝐘 𝐑𝐈𝐎 𝐇𝐔𝐍𝐓𝐄𝐑 $ 𝐁𝐘 𝐘𝐀𝐒𝐒𝐄𝐍 𝐀𝐋𝐌𝐀𝐒𝐑𝐘
-𝐁𝐘  ~» @X888E 🇮🇶
-𝐂𝐇 ~» @E999G 🇮🇶 ",
+𝐁𝐘 𝐑𝐈𝐎 ~» @N_W_9 🇵🇸
+𝐁𝐘 𝐘𝐀𝐒𝐒𝐄𝐍 ~» @y_a_n_u_u 🇵🇸 ",
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
                           [['text'=>'𝐀𝐃𝐃 𝐀𝐂𝐂𝐎𝐔𝐍𝐓','callback_data'=>'login']],
@@ -181,13 +181,13 @@ try {
 				} else {
 				    $bot->sendvideo([
        'chat_id'=>$chatId,
-       'video'=> "https://t.me/E999G/141",
-        'caption'=>'𝐁𝐘   @X888E 𝐂𝐇: @E999G
-🇮🇶',
+       'video'=> "https://t.me/A_5CT/141",
+        'caption'=>'𝐁𝐘 𝐑𝐈𝐎 𝐇𝐔𝐍𝐓𝐄𝐑 @N_W_9 𝐂𝐇: @A_5CT
+🇵🇸',
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
-                          [['text'=>'𝐁𝐘  wawl','url'=>'t.me/X888E']],
-                       [['text'=>" 𝐂𝐇 ", 'url'=>"t.me/E999G"]],
+                          [['text'=>'𝐁𝐘 𝐑𝐈𝐎 𝐇𝐔𝐍𝐓𝐄𝐑','url'=>'t.me/N_W_9']],
+                       [['text'=>"𝐁𝐘 𝐘𝐀𝐒𝐒𝐄𝐍 𝐀𝐋𝐌𝐀𝐒𝐑𝐘", 'url'=>"t.me/y_a_n_u_u"]],
                       ]
                   ])
               ]);   
@@ -299,7 +299,7 @@ try {
             } else {
               $bot->answerCallbackQuery([
 							'callback_query_id'=>$update->callback_query->id,
-							'text'=>"𝐀𝐃𝐃 𝐀 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 🇮🇶",
+							'text'=>"𝐀𝐃𝐃 𝐀 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 🇵🇸",
 							'show_alert'=>1
 						]);
             }
@@ -326,7 +326,7 @@ try {
             } else {
               $bot->answerCallbackQuery([
 							'callback_query_id'=>$update->callback_query->id,
-							'text'=>"𝐀𝐃𝐃 𝐀 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 🇮🇶",
+							'text'=>"𝐀𝐃𝐃 𝐀 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 🇵🇸",
 							'show_alert'=>1
 						]);
             }
@@ -345,7 +345,7 @@ try {
             } else {
               $bot->answerCallbackQuery([
 							'callback_query_id'=>$update->callback_query->id,
-							'text'=>"𝐀𝐃𝐃 𝐀 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 🇮🇶",
+							'text'=>"𝐀𝐃𝐃 𝐀 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 🇵🇸",
 							'show_alert'=>1
 						]);
             }
@@ -367,7 +367,7 @@ try {
                         [['text'=>'𝐅𝐑𝐎𝐌 𝐒𝐔𝐑𝐂𝐇 ','callback_data'=>'search']],
                         [['text'=>'𝐅𝐑𝐎𝐌 𝐇𝐀𝐒𝐇𝐓𝐀𝐆 ','callback_data'=>'hashtag'],['text'=>'𝐅𝐑𝐎𝐌 𝐄𝐗𝐏𝐋𝐎𝐑','callback_data'=>'explore']],
                         [['text'=>'𝐅𝐑𝐎𝐌 𝐅𝐎𝐋𝐋𝐎𝐖𝐄𝐑𝐒 ','callback_data'=>'followers'],['text'=>"𝐅𝐑𝐎𝐌 𝐅𝐎𝐋𝐋𝐎𝐖𝐈𝐍𝐆",'callback_data'=>'following']],
-                        [['text'=>"𝐀𝐂𝐂??𝐔𝐍𝐓 𝐅𝐀𝐊𝐄  : $for",'callback_data'=>'for']],
+                        [['text'=>"𝐀𝐂𝐂𝐎𝐔𝐍𝐓 𝐅𝐀𝐊𝐄  : $for",'callback_data'=>'for']],
                         [['text'=>'𝐍𝐄𝐖 𝐋𝐈𝐒𝐓𝐀 ','callback_data'=>'newList'],['text'=>'𝐋𝐈𝐒𝐓𝐀 𝐎𝐋𝐃','callback_data'=>'append']],
                         [['text'=>'𝐏𝐀𝐆𝐄 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋𝐋 ','callback_data'=>'back']]
                     ]
@@ -395,9 +395,9 @@ try {
           	$bot->editMessageText([
                       'chat_id'=>$chatId,
                       'message_id'=>$mid,
-                      'text'=>"• 𝐁𝐘 wael
-𝐁𝐘  ~» @E999G
-𝐁𝐘 wael ~» @X888E ",
+                     'text'=>"• 𝐁𝐘 𝐑𝐈𝐎 𝐇𝐔𝐍𝐓𝐄𝐑 $ 𝐁𝐘 𝐘𝐀𝐒𝐒𝐄𝐍 𝐀𝐋𝐌𝐀𝐒𝐑𝐘
+𝐁𝐘 𝐑𝐈𝐎 ~» @N_W_9
+𝐁𝐘 𝐘𝐀𝐒𝐒𝐄𝐍 ~» @y_a_n_u_u ",
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
                           [['text'=>'𝐀𝐃𝐃 𝐀 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 ‍','callback_data'=>'login']],
@@ -451,9 +451,9 @@ try {
           	  $bot->editMessageText([
                       'chat_id'=>$chatId,
                       'message_id'=>$mid,
-                      'text'=>"• 𝐁𝐘 wael
-𝐁𝐘  ~» @E999G
-𝐁𝐘 wael ~» @X888E ",
+                       'text'=> "•  𝐁𝐘 𝐑𝐈𝐎 𝐇𝐔𝐍𝐓𝐄𝐑 $ 𝐁𝐘 𝐘𝐀𝐒𝐒𝐄𝐍 𝐀𝐋𝐌𝐀𝐒𝐑𝐘
+𝐁𝐘 𝐑𝐈𝐎 ~» @N_W_9 
+𝐁𝐘 𝐘𝐀𝐒𝐒𝐄𝐍 ~» @y_a_n_u_u ",
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
                           [['text'=>'𝐀𝐃𝐃 𝐀 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 ‍','callback_data'=>'login']],
@@ -473,9 +473,9 @@ try {
           	  $bot->editMessageText([
                       'chat_id'=>$chatId,
                       'message_id'=>$mid,
-                      'text'=>"• 𝐁𝐘 wael
-𝐁𝐘  ~» @E999G
-𝐁𝐘 wael ~» @X888E ",
+                      'text'=>"• 𝐁𝐘 𝐑𝐈𝐎 𝐇𝐔𝐍𝐓𝐄𝐑 $ 𝐁𝐘 𝐘𝐀𝐒𝐒𝐄𝐍 𝐀𝐋𝐌𝐀𝐒𝐑𝐘
+𝐁𝐘 𝐑𝐈𝐎 ~» @N_W_9 
+𝐁𝐘 𝐘𝐀𝐒𝐒𝐄𝐍 ~» @y_a_n_u_u ",
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
                           [['text'=>'𝐀𝐃𝐃 𝐀 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 ‍','callback_data'=>'login']],
@@ -490,7 +490,8 @@ try {
           }
 			}
 		}
-	
+	};
+	$bot = new EzTG(array('throw_telegram_errors'=>false,'token' => $token, 'callback' => $callback));
 } catch(Exception $e){
 	echo $e->getMessage().PHP_EOL;
 	sleep(1);
