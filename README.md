@@ -15,7 +15,7 @@ git git clone https://github.com/Guevaras1explanations/INSTGRAM_hunter
 
 ls
 
-cd insta
+cd INSTGRAM_hunter
 
 ls
 
