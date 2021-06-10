@@ -11,7 +11,7 @@ pkg install php
 
 pkg install screen
  
-git git clone https://github.com/Guevaras1explanations/INSTGRAM_hunter
+git clone https://github.com/Guevaras1explanations/INSTGRAM_hunter
 
 ls
 
