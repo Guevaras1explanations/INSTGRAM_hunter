@@ -27,4 +27,3 @@ foreach($ids as $user){
 	$id = $info->pk;
 	$ig->getFollowing($id,$mid,$user);
 }
-}
