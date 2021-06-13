@@ -293,9 +293,9 @@ function checkGmail($mail){
     }
   $mail = preg_replace('/@(.*)/', '',$mail);
    $ch = curl_init();
-  curl_setopt($ch, CURLOPT_URL,'https://accounts.google.com/InputValidator?resource=SignUp&service=mail');
+  curl_setopt($ch, CURLOPT_URL,'https://accounts.google.com/signin/v2/identifier?hl=ar&continue=https%3A%2F%2Fmail.google.com%2Fmail&service=mail&ec=GAlAFw&flowName=GlifWebSignIn&flowEntry=AddSession');
   curl_setopt($ch,CURLOPT_HTTPHEADER, [
-    'User-Agent: Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16',
+    'User-Agent: Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Mobile Safari/537.36',
 'Content-Type: application/json; charset=utf-8',
 'Host: accounts.google.com',
 'Expect: 100-continue',
@@ -305,7 +305,7 @@ function checkGmail($mail){
   curl_setopt($ch,CURLOPT_POST, 1);
   curl_setopt($ch, CURLOPT_ENCODING , "");
   // echo $mail;
-  $fields = '{"input01":{"Input":"GmailAddress","GmailAddress":"'.$mail.'","FirstName":"'.str_shuffle('javaniq2@gmail.com').'","LastName":"'.str_shuffle('javaniq2@gmail.com').'"},"Locale":"en"}';
+  $fields = '{"input01":{"Input":"GmailAddress","GmailAddress":"'.$mail.'","FirstName":"'.str_shuffle('javaniq1@gmail.com').'","LastName":"'.str_shuffle('javaniq1@gmail.com').'"},"Locale":"en"}';
   curl_setopt($ch,CURLOPT_POSTFIELDS, $fields);
   $res = curl_exec($ch);
   curl_close($ch);
