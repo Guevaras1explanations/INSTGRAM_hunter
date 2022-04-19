@@ -1,8 +1,8 @@
 <?php
 date_default_timezone_set('Africa/Cairo');
 if(!file_exists('config.json')){
-	$token = readline('HI MARO Enter Token: ');
-	$id = readline('HI MARO Enter Id: ');
+	$token = readline('HI almheb Enter Token: ');
+	$id = readline('HI almheb Enter Id: ');
 	file_put_contents('config.json', json_encode(['id'=>$id,'token'=>$token]));
 	
 } else {
@@ -29,32 +29,32 @@ try {
 				if($chatId == $id){
 					if($text == '/start'){
               $bot->sendphoto([ 'chat_id'=>$chatId,
-                  'photo'=>"https://t.me/N9JN9j/7",
-                   'caption'=>'𝙬𝙚𝙡𝙘𝙤𝙢𝙚 𝙞𝙣 𝙗𝙤𝙩 𝙝𝙪𝙣𝙩𝙚𝙧 𝙗𝙮 ꙰𝙢𝙖𝙧𝙤꙰ 🇲🇽',
+                  'photo'=>"https://telegra.ph/file/c4484ad9265d4491f1c01.jpg",
+                   'caption'=>'𝙬𝙚𝙡𝙘𝙤𝙢𝙚 𝙞𝙣 𝙗𝙤𝙩 𝙝𝙪𝙣𝙩𝙚𝙧 𝙗𝙮 ꙰almheb',
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
                             [['text'=>'• 𝙖𝙙𝙙 𝙖𝙘𝙘𝙤𝙪𝙣𝙩 📬','callback_data'=>'login']],
-                            [['text'=>"𝙗𝙤𝙩 𝙙𝙚𝙨𝙘𝙧𝙞𝙥𝙩𝙞𝙤𝙣  👑️", 'url'=>"t.me/YXUYT/3"]],
+                            [['text'=>"𝙗𝙤𝙩 𝙙𝙚𝙨𝙘𝙧𝙞𝙥𝙩𝙞𝙤𝙣  👑️", 'url'=>"t.me/E999G"]],
                       ]
                   ])
                 ]);   
              
              $bot->sendvideo([ 'chat_id'=>$chatId,
                   'video'=>"https://t.me/YXUYuuuytrrttT/3",
-                   'caption'=>'maro',
+                   'caption'=>'almheb',
 
                 ]);
 
                
                  $bot->sendvoice([ 'chat_id'=>$chatId,
                   'voice'=>"https://t.me/YXUhldodykdulduYT/3",
-                   'caption'=>'maro',
+                   'caption'=>'almheb',
 
                 ]);
                 
                 $bot->sendvoice([ 'chat_id'=>$chatId,
                   'voice'=>"https://t.me/YhkxgkdhkxhXUYT/3",
-                   'caption'=>'maro️',
+                   'caption'=>'almheb️',
 
                 ]);
 
@@ -127,8 +127,8 @@ try {
           		    $bot->editMessageText([
                       'chat_id'=>$chatId,
                       'message_id'=>$mid,
-                      'text'=>"• 𝙬𝙚𝙡𝙘𝙤𝙢𝙚 𝙞𝙣 𝙗𝙤𝙩 𝙝𝙪𝙣𝙩𝙚𝙧 𝙗𝙮 ꙰𝙢𝙖𝙧𝙤꙰ 🍻️
-𝙳𝙴𝚅  ~» @MA_RO1",
+                      'text'=>"• 𝙬𝙚𝙡𝙘𝙤𝙢𝙚 𝙞𝙣 𝙗𝙤𝙩 𝙝𝙪𝙣𝙩𝙚𝙧 𝙗𝙮 ꙰almheb 🍻️
+𝙳𝙴𝚅  ~» @X888E",
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
                           [['text'=>'𝙖𝙙𝙙 𝙖𝙘𝙘𝙤𝙪𝙣𝙩 🚦','callback_data'=>'login']],
@@ -184,8 +184,8 @@ try {
         'caption'=>'𝙚𝙧𝙧𝙤𝙧 𝙣𝙤 𝙙𝙖𝙩𝙖 ツ 𝙲𝙰𝙻𝙻 𝙳𝙴𝚅✓',
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
-                          [['text'=>'▫️MARO~','url'=>'t.me/MA_RO1']],
-                       [['text'=>"𝙗𝙤𝙩 𝙙𝙚𝙨𝙘𝙧𝙞𝙥𝙩𝙞𝙤𝙣!", 'url'=>"t.me/YXUYT/3"]],
+                          [['text'=>'▫️almheb~','url'=>'t.me/X888E']],
+                       [['text'=>"𝙗𝙤𝙩 𝙙𝙚𝙨𝙘𝙧𝙞𝙥𝙩𝙞𝙤𝙣!", 'url'=>"t.me/E999G"]],
                       ]
                   ])
               ]);   
@@ -230,7 +230,7 @@ try {
                 'text'=>"Users collection page. \n - Users : $count \n - For Account : $for",
                 'reply_markup'=>json_encode([
                     'inline_keyboard'=>[
-                        [['text'=>'𝙪𝙨𝙚𝙧 𝙛𝙤𝙧 𝙝𝙪𝙣𝙩𝙞𝙣𝙜  🔎','callback_data'=>'usermaro']],
+                        [['text'=>'𝙪𝙨𝙚𝙧 𝙛𝙤𝙧 𝙝𝙪𝙣𝙩𝙞𝙣𝙜  🔎','callback_data'=>'useralmheb']],
                         [['text'=>'𝙛𝙧𝙤𝙢 𝙨𝙚𝙖𝙧𝙘𝙝 ⌨','callback_data'=>'search']],
                         [['text'=>'𝙛𝙧𝙤𝙢 𝙝𝙖𝙨𝙝𝙩𝙖𝙜 #🏷','callback_data'=>'hashtag'],['text'=>'𝙛𝙧𝙤𝙢 𝙚𝙭𝙥𝙡𝙤𝙧𝙚𝙧 📊','callback_data'=>'explore']],
                         [['text'=>'𝙛𝙧𝙤𝙢 𝙛𝙤𝙡𝙡𝙤𝙬𝙚𝙧𝙨 👥','callback_data'=>'followers'],['text'=>"𝙛𝙧𝙤𝙢 𝙛𝙤𝙡𝙡𝙤𝙬𝙞𝙣𝙜 👤",'callback_data'=>'following']],
@@ -240,11 +240,11 @@ try {
                     ]
                 ])
             ]);
-          } if($data == 'usermaro'){
+          } if($data == 'useralmheb'){
             $bot->sendmessage([ 
                'chat_id'=>$chatId,
                'message'=>"https://t.me/fhhunter/3",
-               'caption'=>'maro️',
+               'caption'=>'almheb️',
                  
              ]);    
           } elseif($data == 'search'){
@@ -370,7 +370,7 @@ try {
                 'text'=>"Users collection page. \n - Users : $count \n - For Account : $for",
                 'reply_markup'=>json_encode([
                     'inline_keyboard'=>[
-                        [['text'=>'𝙪𝙨𝙚𝙧 𝙛𝙤𝙧 𝙝𝙪𝙣𝙩𝙞𝙣𝙜  🔎','callback_data'=>'usermaro']],
+                        [['text'=>'𝙪𝙨𝙚𝙧 𝙛𝙤𝙧 𝙝𝙪𝙣𝙩𝙞𝙣𝙜  🔎','callback_data'=>'useralmheb']],
                         [['text'=>'𝙛𝙧𝙤𝙢 𝙨𝙚𝙖𝙧𝙘𝙝 ⌨','callback_data'=>'search']],
                         [['text'=>'𝙛𝙧𝙤𝙢 𝙝𝙖𝙨𝙝𝙩𝙖𝙜 🏷','callback_data'=>'hashtag'],['text'=>'𝙛𝙧𝙤𝙢 𝙚𝙭𝙥𝙡𝙤𝙧𝙚𝙧 📊','callback_data'=>'explore']],
                         [['text'=>'𝙛𝙧𝙤𝙢 𝙛𝙤𝙡𝙡𝙤𝙬𝙚𝙧𝙨 👥','callback_data'=>'followers'],['text'=>"𝙛𝙧𝙤𝙢 𝙛𝙤𝙡𝙡𝙤𝙬𝙞𝙣𝙜 👤",'callback_data'=>'following']],
@@ -402,8 +402,8 @@ try {
           	$bot->editMessageText([
                       'chat_id'=>$chatId,
                       'message_id'=>$mid,
-                     'text'=>"• 𝙬𝙚𝙡𝙘𝙤𝙢𝙚 𝙞𝙣 𝙗𝙤𝙩 𝙝𝙪𝙣𝙩𝙚𝙧 𝙗𝙮 ꙰𝙢𝙖𝙧𝙤꙰ 🍻️
-𝙳𝙴𝚅  ~» @MA_RO1",
+                     'text'=>"• 𝙬𝙚𝙡𝙘𝙤𝙢𝙚 𝙞𝙣 𝙗𝙤𝙩 𝙝𝙪𝙣𝙩𝙚𝙧 𝙗𝙮 ꙰almheb 🍻️
+𝙳𝙴𝚅  ~» @X888E",
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
                           [['text'=>'𝙖𝙙𝙙 𝙖𝙘𝙘𝙤𝙪𝙣𝙩 🚦','callback_data'=>'login']],
@@ -457,8 +457,8 @@ try {
           	  $bot->editMessageText([
                       'chat_id'=>$chatId,
                       'message_id'=>$mid,
-                       'text'=> "• 𝙬𝙚𝙡𝙘𝙤𝙢𝙚 𝙞𝙣 𝙗𝙤𝙩 𝙝𝙪𝙣𝙩𝙚𝙧 𝙗𝙮 ꙰𝙢𝙖𝙧𝙤꙰ 🍻️
-𝙳𝙴𝚅  ~» @MA_RO1",
+                       'text'=> "• 𝙬𝙚𝙡𝙘𝙤𝙢𝙚 𝙞𝙣 𝙗𝙤𝙩 𝙝𝙪𝙣𝙩𝙚𝙧 𝙗𝙮 ꙰almheb 🍻️
+𝙳𝙴𝚅  ~» @X888E",
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
                           [['text'=>'𝙖𝙙𝙙 𝙖𝙘𝙘𝙤𝙪𝙣𝙩 🚦','callback_data'=>'login']],
@@ -478,8 +478,8 @@ try {
           	  $bot->editMessageText([
                       'chat_id'=>$chatId,
                       'message_id'=>$mid,
-                      'text'=>"• 𝙬𝙚𝙡𝙘𝙤𝙢𝙚 𝙞𝙣 𝙗𝙤𝙩 𝙝𝙪𝙣𝙩𝙚𝙧 𝙗𝙮 ꙰𝙢𝙖𝙧𝙤꙰ 🍻️
-𝙳𝙴𝚅 ~» @MA_RO1",
+                      'text'=>"• 𝙬𝙚𝙡𝙘𝙤𝙢𝙚 𝙞𝙣 𝙗𝙤𝙩 𝙝𝙪𝙣𝙩𝙚𝙧 𝙗𝙮 ꙰almheb 🍻️
+𝙳𝙴𝚅 ~» @X888E",
                   'reply_markup'=>json_encode([
                       'inline_keyboard'=>[
                           [['text'=>'𝙖𝙙𝙙 𝙖𝙘𝙘𝙤𝙪𝙣𝙩 🚦','callback_data'=>'login']],
