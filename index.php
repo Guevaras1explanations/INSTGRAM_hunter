@@ -572,7 +572,7 @@ class ig {
 	private $file;
 	public function __construct($settings){
 		$this->account = $settings['account'];
-		$this->account['useragent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36';
+		$this->account['useragent'] = 'Instagram 27.0.0.7.97 Android (23/6.0.1; 640dpi; 1440x2392; LGE/lge; RS988; h1; h1; en_US)';
 		$this->file = $settings['file'];
 		
 	}
