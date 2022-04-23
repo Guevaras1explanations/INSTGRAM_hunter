@@ -13,17 +13,16 @@ function status($for){
     
 }
 function checkMail($mail){
-$mail = strtolower($mail);
         if(mb_substr($mail, -10) === '@gmail.com'){
             return checkGmail($mail);
-        } elseif(preg_match('/(live|hotmail|outlook|outlook.sa)\.(.*)/', $mail)){
+        } elseif(preg_match('/(live|hotmail|outlook)\.(.*)/', $mail)){
             return checkHotmail(newURL(),$mail);
-        } elseif(strpos($mail, 'yahoo.com')){
+        } elseif(strpos($mail, 'yahoo')){
             return checkYahoo($mail);
         } elseif(preg_match('/(mail|bk|yandex|inbox|list)\.(ru)/i', $mail)){
             return checkRU($mail);
         } else {
-            return false;
+            return true;
             
         }
 }
@@ -53,7 +52,7 @@ X-IG-Connection-Type: WIFI
 X-IG-Capabilities: 3Ro=
 Accept-Language: en-US
 Content-Type: application/x-www-form-urlencoded; charset=UTF-8
-User-Agent: Instagram 184.0.0.30.117 Android (25/7.1.2; 240dpi; 720x1280; samsung; SM-N975F; SM-N975F; intel; en-US)
+User-Agent: Instagram 9.7.0 Android (28/9; 420dpi; 1080x2131; samsung; SM-A505F; a50; exynos9610; en_US)
 Accept-Encoding: gzip, deflate
 t'));
 curl_setopt($search,CURLOPT_POST, 1);
@@ -130,18 +129,18 @@ function checkRU($mail){
         return false;
     }
   $ch = curl_init();
-  curl_setopt($ch, CURLOPT_URL,"https://auth.mail.ru/api/v1/pushauth/info?login=".urlencode($mail)."&_=1616433142707");
+  curl_setopt($ch, CURLOPT_URL,"https://auth.mail.ru/api/v1/pushauth/info?login=".urlencode($mail)."&_=1580336451166");
   curl_setopt($ch,CURLOPT_HTTPHEADER, [
-    'Host: auth.mail.ru',
+    'Host: recostream.go.mail.ru',
 'Connection: keep-alive',
-'User-Agent Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36',
+'User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
 'Accept: */*',
-'Origin: https://account.mail.ru',
+'Origin: https://mail.ru',
 'Sec-Fetch-Site: same-site',
 'Sec-Fetch-Mode: cors',
-'Referer: https://account.mail.ru/',
+'Referer: https://mail.ru/',
 'Accept-Encoding: gzip, deflate, br',
-'Accept-Language: en-US;q=0.9,en;q=0.8'
+'Accept-Language: en-US,en;q=0.9,ar;q=0.8'
     ]);
   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -159,98 +158,35 @@ function checkYahoo($mail){
     if(strpos($mail, ' ') or strpos($mail, '+')){
         return false;
     }
-$user = $mail;
-@mkdir("Info");
-$c = curl_init("https://login.yahoo.com/"); 
-curl_setopt($c, CURLOPT_FOLLOWLOCATION, true); 
-curl_setopt($c, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36"); 
-curl_setopt($c, CURLOPT_REFERER, 'https://www.google.com'); 
-curl_setopt($c, CURLOPT_ENCODING, 'gzip, deflate, br');  
-curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);  
-curl_setopt($c, CURLOPT_HEADER, true); 
-curl_setopt($c, CURLOPT_COOKIEJAR, "Info/cookie.txt"); 
-curl_setopt($c, CURLOPT_COOKIEFILE, "Info/cookie.txt"); 
-$response = curl_exec($c); 
-$httpcode = curl_getinfo($c); 
-$header = substr($response, 0, curl_getinfo($c, CURLINFO_HEADER_SIZE)); 
-$body = substr($response, curl_getinfo($c, CURLINFO_HEADER_SIZE)); 
-preg_match_all('#name="crumb" value="(.*?)" />#', $response, $crumb); 
-preg_match_all('#name="acrumb" value="(.*?)" />#', $response, $acrumb); 
-preg_match_all('#name="config" value="(.*?)" />#', $response, $config); 
-preg_match_all('#name="sessionIndex" value="(.*?)" />#', $response, $sesindex); 
-$data['status'] = "ok"; 
-$data['crumb'] = isset($crumb[1][0]) ? $crumb[1][0] : ""; 
-$data['acrumb'] = $acrumb[1][0]; 
-$data['config'] = isset($config[1][0]) ? $config[1][0] : ""; 
-$data['sesindex'] = $sesindex[1][0]; 
-$crumb = trim($data['crumb']); 
-$acrumb = trim($data['acrumb']); 
-$config = trim($data['config']); 
-$sesindex = trim($data['sesindex']); 
-$header = array(); 
-$header[] = "Host: login.yahoo.com"; 
-$header[] = "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/56.0"; 
-$header[] = "Accept: */*"; 
-$header[] = "Accept-Language: en-US,en;q=0.5"; 
-$header[] = "content-type: application/x-www-form-urlencoded; charset=UTF-8"; 
-$header[] = "X-Requested-With: XMLHttpRequest"; 
-$header[] = "Referer: https://login.yahoo.com/"; 
-$header[] = "Connection: keep-alive"; 
-$data = "acrumb=$acrumb&sessionIndex=$sesindex&username=".urlencode($user)."&passwd=&signin=Next"; 
-$c = curl_init("https://login.yahoo.com/"); 
-curl_setopt($c, CURLOPT_FOLLOWLOCATION, true); 
-curl_setopt($c, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36"); 
-curl_setopt($c, CURLOPT_REFERER, 'https://login.yahoo.com/'); 
-curl_setopt($c, CURLOPT_ENCODING, 'gzip, deflate, br');  
-curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);  
-curl_setopt($c, CURLOPT_HTTPHEADER, $header); 
-curl_setopt($c, CURLOPT_COOKIEJAR, "Info/cookie.txt"); 
-curl_setopt($c, CURLOPT_COOKIEFILE, "Info/cookie.txt"); 
-curl_setopt($c, CURLOPT_POSTFIELDS, $data); 
-curl_setopt($c, CURLOPT_POST, 1); 
-$b = curl_exec($c); 
-if(strstr($b,"INVALID_USERNAME")){
-return true;
-}else{
-return false;
-}
-}
-function verifyEmail($email){
-    $ip = file_get_contents("ip.txt");
-    $gmail = json_decode(file_get_contents("http://$ip/api/gmail.php?email=$email"),true)["result"]["success"];
-    if($gmail){
-      return false;
-    }else{
-     return true;
-  }
-
-}
-function check_ban($gmail){
-    $gmail = str_replace("@gmail.com", "", $gmail);
-    $data = "{\"input01\":{\"Input\":\"GmailAddress\",\"GmailAddress\":\"".$gmail."\",\"FirstName\":\"JKHack\",\"LastName\":\"JKHack\"},\"Locale\":\"en\"}";
-    
-    $header = array(); 
-    $header[] = "User-Agent: Mozilla/5.0 (iPod; U; CPU iPhone OS 3_0 like Mac OS X; ja-jp) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16"; 
-    $header[] = "content-type: application/json; charset=utf-8"; 
-    $c = curl_init("https://accounts.google.com/InputValidator?resource=SignUp&service=mail"); 
-    curl_setopt($c, CURLOPT_USERAGENT, "Mozilla/5.0 (iPod; U; CPU iPhone OS 3_0 like Mac OS X; ja-jp) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16"); 
-    curl_setopt($c, CURLOPT_HTTPHEADER, $header); 
-    curl_setopt($c, CURLOPT_COOKIEJAR, "sessions/Gcookie.txt"); 
-    curl_setopt($c, CURLOPT_COOKIEFILE, "sessions/Gcookie.txt"); 
-    curl_setopt($c, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($c, CURLOPT_POST, 1); 
-    $b = curl_exec($c);
-    curl_close($c);
-    
-    if(preg_match('/"Valid":"true"/', $b)){
-
-   $s = "Yes";
-    }else{
-      $s = "No";
+    $mail = preg_replace('/@(.*)/', '',$mail);
+    $login = curl_init(); 
+    curl_setopt($login, CURLOPT_URL, "https://login.yahoo.com/config/login?.src=fpctx&.intl=xa&.lang=en-US&.done=https://maktoob.yahoo.com"); 
+    curl_setopt($login, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($login, CURLOPT_HTTPHEADER, explode("\n", 'Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+bucket: mbr-atthaloc-oauth
+Connection: keep-alive
+content-type: application/x-www-form-urlencoded; charset=UTF-8
+Cookie: B=025g2jdfbjjjm&b=3&s=g6; APID=1Ae136a6cc-943f-11ea-b443-1234a9bcb81c; A1=d=AQABBHbOuV4CEKee2YDgG1TADDB_Q5sCFgEFEgEBAQE6x16oX1xXb2UB_SMAAAcIds65XpsCFgE&S=AQAAAoxIqLGVR1LoIovR16q2D10; A3=d=AQABBHbOuV4CEKee2YDgG1TADDB_Q5sCFgEFEgEBAQE6x16oX1xXb2UB_SMAAAcIds65XpsCFgE&S=AQAAAoxIqLGVR1LoIovR16q2D10; GUC=AQEBAQFexzpfqEIbZQRy; A1S=d=AQABBHbOuV4CEKee2YDgG1TADDB_Q5sCFgEFEgEBAQE6x16oX1xXb2UB_SMAAAcIds65XpsCFgE&S=AQAAAoxIqLGVR1LoIovR16q2D10&j=WORLD; AS=v=1&s=ZW1bkdGu&d=A5edddfb4|J02naJT.2QLkBalG93h42dqZgWw4_e6JDUwKilcf8hsH4xFyFOmG.l3oNQ4uEizaovq0f0t4LycCJZENom6c5hBxBSZPx_AWmFrTXLDwHxDKfGF685_03QK8i6kL7sxWvpM_PQioWtazQsOdPAHQaB5vgcqRY.pfvJUtg0_UA3v0VNgV4YEllYCy_XL2FPVfEtYtVWmU6mCGNlhv3cjGCXVmKYAd.LvpEuS3fhwVQRtzyV3WvC_UKcX76rFmsrot1NXOQyUIsoQpsazBD4AJgNanfcu4m1a.b58dGtT00Xc1UK70dlCpV2G9GFgGzdQ26mOytJEaw6LN.WeKMcsIazOV5p8xr8NzT4UCKedPxp0FjfXTN__ljqjw304zGUItcEaKlgB42h4Le2nXDUh3Rx5PaSHX8OrjTj5DD_lSNGcFs_p1QATC0mLQsvBySVnGXCfPnerQqgkGAdB1QqLgMe81oCDb1lVRDtd2f9KnoFnYJ10tlNfFGsYK1Z3FLakEmULZpZ19LBSBbnd.Mcs1NdaHxbvmbm8IZI_ceARS6dm6vI2Fi6t_97aki9Jp8jdqSgEDb8dekTMHzPUedGWL8WbqzLAgVCU7xcwm3KfcA.mHd0nuOC5r95swTtIT9B1aX6RGRLc0gmFcyfpHq_kWs4Z0VZNpe19veDGs4TE2oLOyEi25qJW3V5s1BukNrZ1.DlatQS0QkagRXA60m.5IjWSymErAAMtXtzB6KWeoF0dg80wkf18pNNb.d8R_nakCD3uG6NaWS_ny9xn5uHWFCSPbPaMztcNtbQsgo2Ood4ep9BsJFW5FwAEfZS33LEvKAO4p5R6RdMRIdaSiitk_Yx8VtAJ6WA.oafBVvvOrWDCjArH69vSpwtnu3Xvubqy1KQrMqMiUbK.pqBFgTPWxAnZtMSd3_2U8r4Lv12hvZOFL0A.WFYEXdCTOl9Kx34ldcyzAv9XMErVhh8xs4lAcCLBQxSZ6noJbHA--~A|B5edf2dbf|nol7O7X.2Srmm7l.XRgD2PIGNZ4UqvPtTH9Qq5lvMej5tdPAPwTIwahYRyIi5X3W726CFhKdSMxvFU1dJ4J7GQH4rvhhCI2EUms4_XFlozERFUnastq5IVzl6Gzm8GjnCu0a.9BgNSXmewl7MPDrrCTRKpkJQk4iTAy5o.yPso_HLAInPq_qxqMko3eV0xqUBq95gLcNJgWhod2yB2MILvXNRfeKRwP9j.PDhXQgfwTRcD0RINTMxNdvZDNcyfJilbEX0V1oAYF5geSAnzWvwRGZBzgwrWQZFajGOFmhrc7Qvz1veg7k8X4KTNZGmjQVIBdvSZhaGIpgluu4Ee2x.SPiGXoW5WMgfR7gK.6Dn4pwjQVwANjn8FUYxVYBmDERBW.st5w.3jdxApm9adyZOXSfWoaTnwDaxWZgEnYBVHJUa_M5ivjRQSaleiE.Zo4ldQdQJfafeLCCI919izdK9azFSIGCVq2leK8tkfcz1Gu3HKTyob1vGP9hAHI4coOxafOi.f8tiURm7oQyHz.9AO5_igd08vVLL7sGquOOhd2lwePIajESKFeQWVbg4p9E1Q6zZTnZcVq1fH.sj1ojPqcGIcLdBenmFT.YJEPM0zvWiUif9TpwtWO6KBKF51uxMZO6fJFa_TLNIU8PCqhYriCsFipY1GbA_NhnrBEjg39HHR6cZqEeyv3hiZCcmOMDThj17nEnhYJqySQ-~A; APIDTS=1591598146
+Host: login.yahoo.com
+Origin: https://login.yahoo.com
+Referer: https://login.yahoo.com/config/login
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36
+X-Requested-With: XMLHttpRequest'));
+    curl_setopt($login, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36');
+    curl_setopt($login,CURLOPT_POST, 1);
+    $fields = 'acrumb=ZW1bkdGu&sessionIndex=Qg--&username='.$mail.'&passwd=&signin=Next&persistent=y';
+    curl_setopt($login,CURLOPT_POSTFIELDS, $fields);
+    $login = curl_exec($login);
+    echo $login;
+    $res = json_decode($login);
+    if(isset($res->render) and isset($res->render->error) and $res->render->error == 'messages.ERROR_INVALID_USERNAME'){
+    	return true;
+    } else {
+    	return false;
     }
-    return $s;
-  }
+}
 function checkGmail($mail){
     $mail = trim($mail);
     if(strpos($mail, ' ') or strpos($mail, '+')){
@@ -258,9 +194,9 @@ function checkGmail($mail){
     }
   $mail = preg_replace('/@(.*)/', '',$mail);
    $ch = curl_init();
-  curl_setopt($ch, CURLOPT_URL,'https://accounts.google.com/signin/v2/identifier?flowEntry=AddSession&flowName=GlifWebSignIn');
+  curl_setopt($ch, CURLOPT_URL,'https://accounts.google.com/InputValidator?resource=SignUp&service=mail');
   curl_setopt($ch,CURLOPT_HTTPHEADER, [
-    'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+    'User-Agent: Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16',
 'Content-Type: application/json; charset=utf-8',
 'Host: accounts.google.com',
 'Expect: 100-continue',
@@ -270,7 +206,7 @@ function checkGmail($mail){
   curl_setopt($ch,CURLOPT_POST, 1);
   curl_setopt($ch, CURLOPT_ENCODING , "");
   // echo $mail;
-  $fields = '{"input01":{"Input":"GmailAddress","GmailAddress":"'.$mail.'","FirstName":"'.str_shuffle('almhebwael2002@gmail.com').'","LastName":"'.str_shuffle('almhebwael2002@gmail.com').'"},"Locale":"en"}';
+  $fields = '{"input01":{"Input":"GmailAddress","GmailAddress":"'.$mail.'","FirstName":"'.str_shuffle('fdgh4hgbgbg').'","LastName":"'.str_shuffle('fdgh4hgbgbg').'"},"Locale":"en"}';
   curl_setopt($ch,CURLOPT_POSTFIELDS, $fields);
   $res = curl_exec($ch);
   curl_close($ch);
@@ -300,23 +236,23 @@ function checkHotmail($url,$mail){
   curl_setopt($ch,CURLOPT_HTTPHEADER, [
     'accept: application/json',
 'accept-encoding: gzip, deflate, br',
-'accept-language: en-US;q=0.9,en;q=0.8',
-'client-request-id: 7c1269886ac843e286b1e3ad209c708b',
+'accept-language: en-US,en;q=0.9,ar;q=0.8',
+'client-request-id: e50b9d86940a4a6b806f141aeb87c2be',
 'content-type: application/json; charset=UTF-8',
-'cookie: logonLatency=LGN01=637576378310792130; uaid=7c1269886ac843e286b1e3ad209c708b; MSPRequ=id=292841&lt=1622041031&co=1; MSCC=20.83.146.56-US; OParams=11DYs695LwS1mC4X7LK6kzGZ7feKYZOWzK8lWlTsO6bELWi3pweTmo*r6YuFiCmE1NLXx0MaAG0TVGHFq7P6FC!Geo8*PbSpWNsJIGf!gZtDx8MgK4t6NH0CNzQ78YK48HCcM4IywvNoZ9!zrvIsNa2DqkC3yXmq2j!1p2xKHIHkp*!eL398AQqoHC1XO5iBA1F1YjJSmXgAS90ek8nY2st5QqDKDP2PQTEotbiISP2A1xYF5Vo2oIbIGkDLHKU*0GMhPJ9RV0Kyzqtgf4mc3!CN5QZEN8iFzU6YtfgxG1tKE1faYMfJZevbL!RvdiErVkRat8InCwTvdlwlQQHeFEsLeLDseIO6JSr9KMScQ!QowASb!*o3pj9ER8azwPj*4kNe6zy9Ne3r9BK820jadVezuzkqUe4fZ!X*kVvDN4qeG3JWs0wgvZN0B089*6y!XJ!VO4e!sny5bzGBY8QAZbMR8Cu0eChTX9AbKS28d3w8aN4fw9iIjZN87ffT31DBYcXbgp4am*Qo7vt*CA!7B6iZg$; MSPOK=$uuid-545d2b59-f136-4f2e-a613-4297d03fe161',
+'cookie: mkt=en-GB; MSCC=1565316440; optimizelyEndUserId=oeu1578914839745r0.28780916970876746; wlidperf=FR=L&ST=1578914863298; logonLatency=LGN01=637153910513160953; uaid=e50b9d86940a4a6b806f141aeb87c2be; amsc=LDSu01eN1p8mu/aQOR8E/JsrWRw2umolJ57H96YKK9t9GpXT/1+TnnHT5teMGz0XmgPXf4UZumsU54kipsswO6VwZggyEEZkxrR8SJd5U3Bru+OEs+9IlLfml8nsNJ3ejH7piSM6y5EfybxtuLMV6SZZxPrFEODePzRujEx/dSV7jpiSYTNk/oajPVQIoZbABA+Hr8QjedZ5390TM7sQmrIwwSPfbUP9vTrTPwnm6GAsbf1k90qWSLMaldKhMPKz1IZCPvKBdWxmfda1hcHSkitzm2byDrC8a0LpF2XtGKG1rZ9S+WvSILthbvLn7tHD:2:3c; MSPRequ=id=N&lt=1579804236&co=0; OParams=11DQFpxS7pzYB5u6z67WXLWoJZxIv4EoI07SIv9NF400Ml6NW3t6RoWfW5Hr7lizMq9bTQDRrsBBlbQXkVL!Jzo6knJIEJdFbUDS!Cq1zNJJNK1ehiYyB5fMyO7bnj7Dfz!6mDuk2OShJVVlatli5JeYXDDFRljVvQzkJ91cXbHLJoRP9A!EbyBF3boCkZ7s9f*ePQZWGwqnAeCz3sclT68b4ntJXMLTAqi4CgcEiEE9XjSekdGg2q!pHh7IcjwLKjvusYzdiaK6axwAp4hw35vvcsyA4UOD26uE04LKjAFPIDZcXmrqzHNjklndRTqAp!1PMSFEvdlrAa9FyrbN1f6CA$; MSPOK=$uuid-84fae358-0e4d-4cbc-9401-c4c0d1dfc0b8$uuid-2dfff29d-11fd-4e53-85a7-8d3cff5e2754$uuid-b7c92f16-b89a-445d-95a9-cc1c6686aab2',
 'hpgact: 0',
 'hpgid: 33',
 'origin: https://login.live.com',
 'referer: https://login.live.com/',
 'sec-fetch-mode: cors',
 'sec-fetch-site: same-origin',
-'user-agent: Mozilla/5.0 (Linux i686) AppleWebKit/560.0 (KHTML, live Gecko) Chrome/11.01393.973 Safari/560'
+'user-agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
     ]);
   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
   curl_setopt($ch, CURLOPT_ENCODING , "");
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   curl_setopt($ch,CURLOPT_POST, 1);
-  curl_setopt($ch,CURLOPT_POSTFIELDS, '{"username":"'.$mail.'","uaid":"'.$uaid.'",""","isOtherIdpSupported":false,"checkPhones":false,"isRemoteNGCSupported":true,"isCookieBannerShown":false,"isFidoSupported":false,"forceotclogin":false,"otclogindisallowed":false,"isExternalFederationDisallowed":false,"isRemoteConnectSupported":false,"federationFlags":3,"isSignup":false,"flowToken":"DbzVlffcqympkLG1EpFy6FghFkoMlpZ4bx2RXi4e6Qcv0YVAmy3YnSnKvhJXxOYt*jmH1Imud9G2aTfGsDV3MtS6rwy!w2LA7auMgQdwhlw9y6iM*b6mthPTK5!*uSj6QZW28AJCbydR5N9ZUEsBOzxcaPxl79gsWaFDsk!QML5*tqhk3aAGgDEo*jQ12b69g2JhtQnQ6mdxdyRhSfu5su1cgzZeXqxoViTfFMHxEiJM6MlshDj!oAyPFhGQpnCxMA$$"}');
+  curl_setopt($ch,CURLOPT_POSTFIELDS, '{"username":"'.$mail.'","uaid":"'.$uaid.'","isOtherIdpSupported":false,"checkPhones":true,"isRemoteNGCSupported":true,"isCookieBannerShown":false,"isFidoSupported":true,"forceotclogin":false,"otclogindisallowed":true,"isExternalFederationDisallowed":false,"isRemoteConnectSupported":false,"federationFlags":3,"flowToken":"DdMUDCNyFcwT9VK5vlBBCGF5VYFUBuVVVK2FCJkTvdIr8vao!78DWHV1d5iJQAlaBgKQtik4V0TTdj0gqiYx89skmL*Ir9FvzAs8FIul6MJmsHl*WMZuh0WOAYNDzGgH!5A9TURocDSg*qbkZVrdh1ZG0j5NWvtsfdqMRYbAqujacfOSUA2ZuxmvSFlYz3dxOG3DhusRzPYqFqfWhc3xLxFDzf4NhhCCPTdQ3BQfvcZ9yE0KqqOWnDllRJvXO!tJeA$$"}');
   $res = curl_exec($ch);
   curl_close($ch);
   $res = json_decode($res)->IfExistsResult;
@@ -377,7 +313,7 @@ class EzTG
     }
     private function is_telegram()
     {
-        if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) { //preferisco non usare x-forwarded-for xk si può spoof
+        if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) { //@api_web
             $ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
         } else {
             $ip = $_SERVER['REMOTE_ADDR'];
@@ -822,13 +758,13 @@ class ig {
 	  if($account == 0){
 	  	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 		     'x-ig-capabilities: 3w==',
-		     'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36',
+		     'user-agent: Instagram 27.0.0.7.97 Android (23/6.0.1; 640dpi; 1440x2392; LGE/lge; RS988; h1; h1; en_US)',
 		     'host: i.instagram.com',
 		     'X-CSRFToken: missing',
 		     'X-Instagram-AJAX: 1',
 		     'Content-Type: application/x-www-form-urlencoded',
 		     'X-Requested-With: XMLHttpRequest',
-		     "Cookie: mid=YGYdxwABAAFbPzIywqLcwV0yKzmU",
+		     "Cookie: mid=XUzLlQABAAH63ME45I6TG-i46cOi",
 		     'Connection: keep-alive'
 		  ));
 	  } elseif($account == 1){
